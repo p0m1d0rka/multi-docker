@@ -10,17 +10,17 @@ script:
 
 after_success:
   # build production images
-  - docker build -t p0m1d0rka/multi-client ./client
-  - docker build -t p0m1d0rka/multi-nginx ./nginx
-  - docker build -t p0m1d0rka/multi-server ./server
-  - docker build -t p0m1d0rka/multi-worker ./worker
+  - docker build -t p0m1d0rka/multi-client:1.0.0 ./client
+  - docker build -t p0m1d0rka/multi-nginx:1.0.0 ./nginx
+  - docker build -t p0m1d0rka/multi-server:1.0.0 ./server
+  - docker build -t p0m1d0rka/multi-worker:1.0.0 ./worker
   # log in to docker cli
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   # push to docker hub
-  - docker push p0m1d0rka/multi-client
-  - docker push p0m1d0rka/multi-nginx
-  - docker push  p0m1d0rka/multi-server
-  - docker push p0m1d0rka/multi-worker
+  - docker push p0m1d0rka/multi-client:1.0.0 
+  - docker push p0m1d0rka/multi-nginx:1.0.0 
+  - docker push  p0m1d0rka/multi-server:1.0.0 
+  - docker push p0m1d0rka/multi-worker:1.0.0 
 deploy:
   provider: elasticbeanstalk
   region: "us-east-1"
